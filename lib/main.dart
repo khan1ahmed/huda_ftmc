@@ -29,7 +29,10 @@ class _MyAppState extends State<MyApp> {
         const Duration(seconds: 3),
         () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => home()),
+              MaterialPageRoute(
+                  builder: (context) => Scaffold(
+                        body: home(),
+                      )),
             ));
   }
 
@@ -52,7 +55,10 @@ class _MyAppState extends State<MyApp> {
           Divider(
             height: 105.2,
             color: Color(0xff20A090),
-          ),SizedBox(height: 230,),
+          ),
+          SizedBox(
+            height: 230,
+          ),
           Text(
             "Hazara University",
             style: TextStyle(

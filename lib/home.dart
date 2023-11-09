@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:huda_ftmc/Setting.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -20,6 +21,7 @@ class _homeState extends State<home> {
     "time": "12:12 Am",
     "humid": 44
   };
+
   // @override
   // void initState() {
   //   getData();
@@ -65,18 +67,52 @@ class _homeState extends State<home> {
                             fontSize: 30),
                       ),
                     ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 100),
-                          child: Icon(
-                            Icons.settings_sharp,
-                            size: 40,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      width: 60,
                     ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Setting(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0, backgroundColor: Color(0xff20A090)),
+                        child: Icon(
+                          Icons.settings,
+                          size: 40,
+                          color: Colors.white,
+                        ))
+                    // IconButton(
+                    //   onPressed: () {
+                    //     print('icon pressed');
+                    //   },
+                    //   icon: Icon(
+                    //     Icons.settings_sharp,
+                    //     size: 40,
+                    //     color: Colors.white,
+                    //   ),
+                    // ),
+                    // Row(
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(left: 100),
+                    //       child: InkWell(
+                    //         child: Icon(
+                    //           Icons.settings_sharp,
+                    //           size: 40,
+                    //           color: Colors.white,
+                    //         ),
+                    //         onTap: () {
+                    //           print('object');
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
                 SizedBox(
@@ -106,9 +142,7 @@ class _homeState extends State<home> {
                                 image: AssetImage('assets/Vector.png'),
                               ),
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                            SizedBox(width: 15),
                             Text(
                               'Data Updated on',
                               style: TextStyle(
@@ -118,7 +152,7 @@ class _homeState extends State<home> {
                                   color: Colors.black),
                             ),
                             SizedBox(
-                              width: 110,
+                              width: 70,
                             ),
                             Text(
                               Data['time'],
@@ -258,7 +292,7 @@ class _homeState extends State<home> {
                 ),
                 Container(
                   padding: EdgeInsets.all(10),
-                  height: 95,
+                  height: 103,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(60),
@@ -280,7 +314,7 @@ class _homeState extends State<home> {
                         width: 10,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width - 140,
+                        width: MediaQuery.of(context).size.width - 115,
                         child: Column(
                           children: [
                             Row(
@@ -386,7 +420,7 @@ class _homeState extends State<home> {
                 ),
                 Container(
                   padding: EdgeInsets.all(10),
-                  height: 95,
+                  height: 103,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
@@ -408,7 +442,7 @@ class _homeState extends State<home> {
                         width: 10,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width - 140,
+                        width: MediaQuery.of(context).size.width - 115,
                         child: Column(
                           children: [
                             Row(

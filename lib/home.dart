@@ -84,7 +84,7 @@ class _homeState extends State<home> {
                         child: Icon(
                           Icons.settings,
                           size: 40,
-                          color: Colors.white,
+                          color: const Color.fromARGB(255, 26, 22, 22),
                         ))
                     // IconButton(
                     //   onPressed: () {

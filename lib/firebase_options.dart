@@ -58,5 +58,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '113324204990',
     projectId: 'dpt-agri',
     storageBucket: 'dpt-agri.appspot.com',
+    databaseURL: 'https://dpt-agri-default-rtdb.firebaseio.com',
   );
 }

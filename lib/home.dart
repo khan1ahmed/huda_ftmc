@@ -14,35 +14,48 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   Map Data = {
-    "light": false,
-    "color": false,
-    "temp": 21.3,
-    "ac": true,
-    "time": "12:12 Am",
-    "humid": 44
+  //    "Esp": {
+  //   "ac": {
+  //     "humid": 80,
+  //     "off": 10,
+  //     "on": 15,
+  //     "status": true,
+  //     "temp": 18
+  //   },
+  //   "lights": {
+  //     "off": "19:30",
+  //     "on": "10:30",
+  //     "status": true
+  //   },
+  //   "time": "12:12 Am"
+  // }
   };
-
-  // @override
-  // void initState() {
-  //   getData();
-  // }
-
-  // getData() async {
-  //   final ref = FirebaseDatabase.instance.ref();
-  //   final snapshot = await ref.child('Esp').get();
-  //   if (snapshot.exists) {
-  //     print(snapshot.value);
-  //     setState(() {
-  //       Data = snapshot.value as Map;
-  //     });
-  //   } else {
-  //     print('No data available.');
-  //   }
-  // }
+bool isLoading =true;
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  getData() {
+    FirebaseDatabase.instance.ref('Esp').onValue.listen((DatabaseEvent event) {
+      final res = event.snapshot.value;
+      setState(() {
+        Data = res as Map;
+        isLoading=false;
+      });
+      // print(Data);
+    print( Data['time']);
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return isLoading?CircularProgressIndicator(): Container(
       decoration: BoxDecoration(color: Color(0xff20A090)),
       child: Column(
         children: [
@@ -86,34 +99,7 @@ class _homeState extends State<home> {
                           size: 40,
                           color: Color.fromARGB(255, 252, 250, 250),
                         ))
-                    // IconButton(
-                    //   onPressed: () {
-                    //     print('icon pressed');
-                    //   },
-                    //   icon: Icon(
-                    //     Icons.settings_sharp,
-                    //     size: 40,
-                    //     color: Colors.white,
-                    //   ),
-                    // ),
-                    // Row(
-                    //   children: [
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(left: 100),
-                    //       child: InkWell(
-                    //         child: Icon(
-                    //           Icons.settings_sharp,
-                    //           size: 40,
-                    //           color: Colors.white,
-                    //         ),
-                    //         onTap: () {
-                    //           print('object');
-                    //         },
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
+                   ],
                 ),
                 SizedBox(
                   height: 25,
@@ -212,7 +198,7 @@ class _homeState extends State<home> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      Data['temp'].toString(),
+                                      Data["ac"]['temp'].toString(),
                                       style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.chewy().fontFamily,
@@ -260,8 +246,7 @@ class _homeState extends State<home> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      Data['humid'].toString(),
-                                      style: TextStyle(
+                                  Data["ac"]['humid'].toString(),                                      style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.chewy().fontFamily,
                                           fontSize: 76,
@@ -339,13 +324,13 @@ class _homeState extends State<home> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(100),
-                                            color: Data['color']
+                                            color:    Data["lights"]['status']
                                                 ? Colors.red
                                                 : Colors.lightBlue),
                                       ),
                                     ),
                                     Text(
-                                      Data['light'] ? "Off" : "On",
+                                      Data['lights']['status'] ? "Off" : "On",
                                       style: TextStyle(
                                           fontFamily: GoogleFonts.concertOne()
                                               .fontFamily,
@@ -362,7 +347,7 @@ class _homeState extends State<home> {
                               children: [
                                 Column(
                                   children: [
-                                    Text(
+                                    Text( 
                                       'Up Time',
                                       style: TextStyle(
                                           fontFamily:
@@ -372,7 +357,7 @@ class _homeState extends State<home> {
                                           color: Colors.black),
                                     ),
                                     Text(
-                                      '10:00 AM',
+                                      Data['lights']["on"],
                                       style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.inter().fontFamily,
@@ -397,7 +382,7 @@ class _homeState extends State<home> {
                                           color: Colors.black),
                                     ),
                                     Text(
-                                      '05:00 PM ',
+                                      Data['lights']['off'],
                                       style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.itim().fontFamily,
@@ -467,13 +452,13 @@ class _homeState extends State<home> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(100),
-                                            color: Data['color']
+                                            color: Data['ac']['status']
                                                 ? Colors.red
                                                 : Colors.lightBlue),
                                       ),
                                     ),
                                     Text(
-                                      Data['light'] ? "Off" : "On",
+                                      Data['lights']['status'] ? "Off" : "On",
                                       style: TextStyle(
                                           fontFamily: GoogleFonts.concertOne()
                                               .fontFamily,
@@ -502,7 +487,7 @@ class _homeState extends State<home> {
                                     Row(
                                       children: [
                                         Text(
-                                          Data['temp'].toString(),
+                                          Data['ac']['on'].toString(),
                                           style: TextStyle(
                                               fontFamily: GoogleFonts.inter()
                                                   .fontFamily,
@@ -540,7 +525,7 @@ class _homeState extends State<home> {
                                     Row(
                                       children: [
                                         Text(
-                                          Data['temp'].toString(),
+                                         Data['ac']['off'].toString(),
                                           style: TextStyle(
                                               fontFamily:
                                                   GoogleFonts.itim().fontFamily,
@@ -571,7 +556,7 @@ class _homeState extends State<home> {
                 ),
               ],
             ),
-          ),
+          ),       
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'package:huda_ftmc/Setting.dart';
 import 'package:huda_ftmc/firebase_options.dart';
 import 'package:huda_ftmc/home.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:huda_ftmc/test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +13,9 @@ void main() async {
   );
   runApp(new MaterialApp(
     theme: ThemeData(),
-    home: new MyApp(),
-    // home:Navigation(),
+    // home: new MyApp(),
+    home: MyHomePage(),
+    // home:Setting(),
   ));
 }
 

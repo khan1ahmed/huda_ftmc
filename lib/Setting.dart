@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:huda_ftmc/AcTemp.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -111,111 +112,8 @@ class _SettingState extends State<Setting> {
               SizedBox(
                 height: 30,
               ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'AC on temp',
-                        style: TextStyle(
-                            fontFamily: GoogleFonts.cabin().fontFamily,
-                            fontWeight: FontWeight.w700,
-                            color: Color.fromARGB(255, 248, 246, 246),
-                            fontSize: 17),
-                      ),
-                      SizedBox(
-                        width: 130,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 50),
-                        child: Text(
-                          'AC off temp',
-                          style: TextStyle(
-                              fontFamily: GoogleFonts.cabin().fontFamily,
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromARGB(255, 250, 249, 249),
-                              fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        color: Color(0xff20A090),
-                        child: DropdownButton(
-                          dropdownColor: Color(0xff20A090),
-                          // Initial Value
-                          value: dropdownvalue,
-
-                          // Down Arrow Icon
-                          icon: const Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white,
-                          ),
-
-                          // Array list of items
-                          items: items.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Text(
-                                items,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
-                              ),
-                            );
-                          }).toList(),
-                          // After selecting the desired option,it will
-                          // change button value to selected value
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownvalue = newValue!;
-                            });
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        width: 140,
-                      ),
-                      Container(
-                        color: Color(0xff20A090),
-                        child: DropdownButton(
-                          dropdownColor: Color(0xff20A090),
-                          // Initial Value
-                          value: seconddropdown,
-
-                          // Down Arrow Icon
-                          icon: const Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white,
-                          ),
-
-                          // Array list of items
-                          items: items.map((String number) {
-                            return DropdownMenuItem(
-                              value: number,
-                              child: Text(
-                                number,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
-                              ),
-                            );
-                          }).toList(),
-                          // After selecting the desired option,it will
-                          // change button value to selected value
-                          onChanged: (String? number) {
-                            setState(() {
-                              seconddropdown = number!;
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
+              TemperatueAdjuster(),
+             SizedBox(
                 height: 50,
               ),
               Divider(

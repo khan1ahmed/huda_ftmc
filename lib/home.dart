@@ -13,23 +13,7 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  Map Data = {
-  //    "Esp": {
-  //   "ac": {
-  //     "humid": 80,
-  //     "off": 10,
-  //     "on": 15,
-  //     "status": true,
-  //     "temp": 18
-  //   },
-  //   "lights": {
-  //     "off": "19:30",
-  //     "on": "10:30",
-  //     "status": true
-  //   },
-  //   "time": "12:12 Am"
-  // }
-  };
+  Map Data = {};
 bool isLoading =true;
   @override
   void initState() {
@@ -302,6 +286,7 @@ bool isLoading =true;
                         width: MediaQuery.of(context).size.width - 115,
                         child: Column(
                           children: [
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -357,7 +342,7 @@ bool isLoading =true;
                                           color: Colors.black),
                                     ),
                                     Text(
-                                      Data['lights']["on"],
+                                      Data['lights']["on"]['time'],
                                       style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.inter().fontFamily,
@@ -382,7 +367,7 @@ bool isLoading =true;
                                           color: Colors.black),
                                     ),
                                     Text(
-                                      Data['lights']['off'],
+                                      Data['lights']['off']['time'],
                                       style: TextStyle(
                                           fontFamily:
                                               GoogleFonts.itim().fontFamily,

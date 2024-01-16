@@ -13,6 +13,7 @@ void main() async {
   );
   runApp(new MaterialApp(
     theme: ThemeData(),
+    debugShowCheckedModeBanner: false,
     // home: new MyApp(),
     home: home(),
     // home:Setting(),

@@ -14,7 +14,7 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
- final DatabaseReference databaseReference =
+  final DatabaseReference databaseReference =
       FirebaseDatabase.instance.ref("Esp/lights");
 
   TimeOfDay? selectedTime;
@@ -47,15 +47,9 @@ class _SettingState extends State<Setting> {
     });
   }
 
-
-
-
-
   TextEditingController timeOff = TextEditingController();
   TextEditingController timeOn = TextEditingController();
   TextEditingController lightoff = TextEditingController();
-
-
 
   String dropdownvalue = 'Item 1';
 
@@ -69,8 +63,6 @@ class _SettingState extends State<Setting> {
   ];
   String seconddropdown = 'Item 1';
 
-
- 
   @override
   void initState() {
     // timeinput.text = "";
@@ -113,7 +105,7 @@ class _SettingState extends State<Setting> {
                 height: 30,
               ),
               TemperatueAdjuster(),
-             SizedBox(
+              SizedBox(
                 height: 50,
               ),
               Divider(
@@ -149,14 +141,15 @@ class _SettingState extends State<Setting> {
                         fontSize: 20),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: MediaQuery.of(context).size.width * 0.03,
                   ),
                   SizedBox(
-                      width: 200,
-                      child:   ElevatedButton(
-              onPressed: () => _selectTime(context, "on"),
-              child: Text('$onTime'),
-            ),),
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: ElevatedButton(
+                      onPressed: () => _selectTime(context, "on"),
+                      child: Text('$onTime'),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -172,21 +165,19 @@ class _SettingState extends State<Setting> {
                         color: Color.fromARGB(255, 253, 253, 253),
                         fontSize: 20),
                   ),
-                 
+
                   SizedBox(
-                    width: 10,
+                    width: MediaQuery.of(context).size.width * 0.03,
                   ),
                   SizedBox(
-                      width: 200,
-                      child: 
-                      
-                       ElevatedButton(
-              onPressed: () => _selectTime(context, "off"),
-              child: Text('$offTime'),
-            ),), //3 box hu
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: ElevatedButton(
+                      onPressed: () => _selectTime(context, "off"),
+                      child: Text('$offTime'),
+                    ),
+                  ), //3 box hu
                 ],
               ),
-              
             ],
           ),
         ),

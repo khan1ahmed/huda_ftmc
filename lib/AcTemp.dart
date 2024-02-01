@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-class TemperatueAdjuster extends StatefulWidget {
+class TemperatureAdjuster extends StatefulWidget {
   @override
-  _TemperatueAdjusterState createState() => _TemperatueAdjusterState();
+  _TemperatureAdjusterState createState() => _TemperatureAdjusterState();
 }
 
-class _TemperatueAdjusterState extends State<TemperatueAdjuster> {
+class _TemperatureAdjusterState extends State<TemperatureAdjuster> {
   late DatabaseReference _acOnRef, _acOffRef;
   int _acOnTemp = 16;
   int _acOffTemp = 30;
@@ -18,61 +18,59 @@ class _TemperatueAdjusterState extends State<TemperatueAdjuster> {
     // Replace "your_database_url" with your Firebase Realtime Database URL
     _acOnRef = FirebaseDatabase.instance.ref('/Esp/ac/on');
     _acOffRef = FirebaseDatabase.instance.ref('/Esp/ac/off');
+
+    // Listen for changes in the database and update the state accordingly
     _acOnRef.onValue.listen((DatabaseEvent event) {
       setState(() {
-        _acOnTemp = event.snapshot.value as int;
+        _acOnTemp = (event.snapshot.value ?? 16) as int;
       });
     });
+
     _acOffRef.onValue.listen((DatabaseEvent event) {
       setState(() {
-        _acOffTemp = event.snapshot.value as int;
+        _acOffTemp = (event.snapshot.value ?? 30) as int;
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Temperature Adjuster'),
+      ),
+      body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-        Column(
-          children: [
-            Text('data'),
-              DropdownButton<double>(
-            value: _acOnTemp.toDouble(),
-            items: _buildDropdownItems(),
-            onChanged: (value) {
-              _acOnRef.set(value?.toInt());
-            },
-          ),
-          ],
-        ),
-       
-        
-        Column(children: [
-          Text('data'),
-            DropdownButton<double>(
-            
-            value: _acOffTemp.toDouble(),
-            items: _buildDropdownItems(),
-            onChanged: (value) {
-              _acOffRef.set(value?.toInt());
-            },
-          ),
-        ],)
+          buildColumn('AC On Temperature', _acOnTemp, _acOnRef),
+          buildColumn('AC Off Temperature', _acOffTemp, _acOffRef),
         ],
-      
+      ),
     );
   }
 
-  List<DropdownMenuItem<double>> _buildDropdownItems() {
-    List<DropdownMenuItem<double>> items = [];
-    for (double i = 16.0; i <= 30.0; i++) {
+  Column buildColumn(String label, int value, DatabaseReference reference) {
+    return Column(
+      children: [
+        Text(label),
+        DropdownButton<int>(
+          value: value,
+          items: _buildDropdownItems(),
+          onChanged: (selectedValue) {
+            reference.set(selectedValue);
+          },
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<int>> _buildDropdownItems() {
+    List<DropdownMenuItem<int>> items = [];
+    for (int i = 16; i <= 30; i++) {
       items.add(DropdownMenuItem(
         value: i,
         child: Text('$i °C'),
       ));
-      
     }
     return items;
   }

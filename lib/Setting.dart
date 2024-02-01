@@ -61,7 +61,7 @@ class _SettingState extends State<Setting> {
     '4',
     '5',
   ];
-  String seconddropdown = 'Item 1';
+  String seconddropdown = 'Item 2';
 
   @override
   void initState() {
@@ -104,7 +104,7 @@ class _SettingState extends State<Setting> {
               SizedBox(
                 height: 30,
               ),
-              TemperatueAdjuster(),
+              TemperatureAdjuster(),
               SizedBox(
                 height: 50,
               ),

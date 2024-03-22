@@ -75,111 +75,90 @@ class _SettingState extends State<Setting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff20A090),
+        backgroundColor: const Color(0xff20A090),
         elevation: 0,
-        title: Text('Setting'),
+        title: const Text('Setting'),
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(color: Color(0xff20A090)),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 50,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Air Conditioner Setting',
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        fontWeight: FontWeight.w800,
-                        color: Color.fromARGB(255, 253, 252, 252),
-                        fontSize: 20),
+        decoration: const BoxDecoration(color: Color(0xff20A090)),
+        child:  Column(
+          children: [            
+            const Text(
+              'Air Conditioner Setting',
+              style: TextStyle(
+                //  fontFamily: GoogleFonts.inter().fontFamily,
+                  fontWeight: FontWeight.w800,
+                  color: Color.fromARGB(255, 253, 252, 252),
+                  fontSize: 20),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const TemperatureAdjuster(),
+            const Divider(
+              thickness: 2,
+              color: Color.fromARGB(255, 236, 234, 234),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              'Lights Setting',
+              style: TextStyle(
+                 // fontFamily: GoogleFonts.inter().fontFamily,
+                  fontWeight: FontWeight.w800,
+                  color: Color.fromARGB(255, 253, 251, 251),
+                  fontSize: 20),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Lights On Time',
+                  style: TextStyle(
+                    //  fontFamily: GoogleFonts.inter().fontFamily,
+                      fontWeight: FontWeight.w800,
+                      color: Color.fromARGB(255, 250, 249, 249),
+                      fontSize: 20),
+                ),
+               
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  child: ElevatedButton(
+                    onPressed: () => _selectTime(context, "on"),
+                    child: Text(onTime),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TemperatureAdjuster(),
-              SizedBox(
-                height: 50,
-              ),
-              Divider(
-                thickness: 2,
-                color: const Color.fromARGB(255, 236, 234, 234),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Column(
-                children: [
-                  Text(
-                    'Lights Setting',
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        fontWeight: FontWeight.w800,
-                        color: Color.fromARGB(255, 253, 251, 251),
-                        fontSize: 20),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Lights Off Time',
+                  style: TextStyle(
+                      fontFamily: GoogleFonts.inter().fontFamily,
+                      fontWeight: FontWeight.w800,
+                      color: const Color.fromARGB(255, 253, 253, 253),
+                      fontSize: 20),
+                ),
+                SizedBox(
+                 width: MediaQuery.of(context).size.width * 0.3,
+                  child: ElevatedButton(
+                    onPressed: () => _selectTime(context, "off"),
+                    child: Text(offTime),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Lights On Time',
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        fontWeight: FontWeight.w800,
-                        color: Color.fromARGB(255, 250, 249, 249),
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.03,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: ElevatedButton(
-                      onPressed: () => _selectTime(context, "on"),
-                      child: Text('$onTime'),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Lights Off Time',
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        fontWeight: FontWeight.w800,
-                        color: Color.fromARGB(255, 253, 253, 253),
-                        fontSize: 20),
-                  ),
-
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.03,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: ElevatedButton(
-                      onPressed: () => _selectTime(context, "off"),
-                      child: Text('$offTime'),
-                    ),
-                  ), //3 box hu
-                ],
-              ),
-            ],
-          ),
+                ), //3 box hu
+              ],
+            ),
+           ],
         ),
       ),
     );

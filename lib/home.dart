@@ -41,18 +41,18 @@ class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? CircularProgressIndicator()
+        ? const CircularProgressIndicator()
         : Scaffold(
           body: Container(
-              decoration: BoxDecoration(color: Color(0xff20A090)),
+              decoration: const BoxDecoration(color: Color(0xff20A090)),
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 50,
+                        const SizedBox(
+                          height: 30,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +63,7 @@ class _homeState extends State<home> {
                                 'Home',
                                 style: TextStyle(
                                     fontFamily: GoogleFonts.inter().fontFamily,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                     fontSize: 30),
                               ),
@@ -76,21 +76,21 @@ class _homeState extends State<home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Setting(),
+                                      builder: (context) => const Setting(),
                                     ),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
                                     elevation: 0,
-                                    backgroundColor: Color(0xff20A090)),
-                                child: Icon(
+                                    backgroundColor: const Color(0xff20A090)),
+                                child: const Icon(
                                   Icons.settings,
                                   size: 40,
                                   color: Color.fromARGB(255, 252, 250, 250),
                                 ))
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
                         Row(
@@ -99,11 +99,11 @@ class _homeState extends State<home> {
                               height: 40,
                               width: MediaQuery.of(context).size.width - 20,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: const Color.fromARGB(255, 255, 255, 255),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.only(left: 10, right: 5),
+                                padding: const EdgeInsets.only(left: 10, right: 5),
                                 child: Row(
                                   children: [
                                     Container(
@@ -111,13 +111,13 @@ class _homeState extends State<home> {
                                       width: 30,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(100),
-                                        color: Color.fromARGB(255, 40, 145, 145),
+                                        color: const Color.fromARGB(255, 40, 145, 145),
                                       ),
-                                      child: Image(
+                                      child: const Image(
                                         image: AssetImage('assets/Vector.png'),
                                       ),
                                     ),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Text(
                                       'Data Updated on',
                                       style: TextStyle(
@@ -127,7 +127,7 @@ class _homeState extends State<home> {
                                           fontWeight: FontWeight.w800,
                                           color: Colors.black),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 70,
                                     ),
                                     Text(
@@ -153,130 +153,133 @@ class _homeState extends State<home> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 25,
+                         SizedBox(
+                          height:MediaQuery.of(context).size.height*0.02,
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 170,
-                              width: MediaQuery.of(context).size.width - 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                  color: Colors.white),
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 30, right: 30),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          'Temperature',
-                                          style: TextStyle(
-                                              fontFamily:
-                                                  GoogleFonts.cabin().fontFamily,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              Data["ac"]['temp'].toString(),
-                                              style: TextStyle(
-                                                  fontFamily: GoogleFonts.chewy()
-                                                      .fontFamily,
-                                                  fontSize: 76,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              '°c',
-                                              style: TextStyle(
-                                                  fontFamily: GoogleFonts.cabin()
-                                                      .fontFamily,
-                                                  fontSize: 33,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    VerticalDivider(
-                                      color: Colors.black,
-                                      thickness: 1,
-                                      endIndent: 20,
-                                      indent: 30,
-                                    ),
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          'Humidity',
-                                          style: TextStyle(
-                                              fontFamily:
-                                                  GoogleFonts.cabin().fontFamily,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              Data["ac"]['humid'].toString(),
-                                              style: TextStyle(
-                                                  fontFamily: GoogleFonts.chewy()
-                                                      .fontFamily,
-                                                  fontSize: 76,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              '%',
-                                              style: TextStyle(
-                                                  fontFamily: GoogleFonts.cabin()
-                                                      .fontFamily,
-                                                  fontSize: 33,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            children: [
+                              Container(
+                                height:MediaQuery.of(context).size.height*0.2,
+                                width: MediaQuery.of(context).size.width *0.86,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 30, right: 30),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Column(
+                                        children: [
+                                           SizedBox(
+                                           height:MediaQuery.of(context).size.height*0.02
+                                          ),
+                                          Text(
+                                            'Temperature',
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    GoogleFonts.cabin().fontFamily,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black),
+                                          ),
+                                           SizedBox(
+                                            height:MediaQuery.of(context).size.height*0.02
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                Data["ac"]['temp'].toString(),
+                                                style: TextStyle(
+                                                    fontFamily: GoogleFonts.chewy()
+                                                        .fontFamily,
+                                                    fontSize: 50,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black),
+                                              ),
+                                              Text(
+                                                '°c',
+                                                style: TextStyle(
+                                                    fontFamily: GoogleFonts.cabin()
+                                                        .fontFamily,
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const VerticalDivider(
+                                        color: Colors.black,
+                                        thickness: 1,
+                                        endIndent: 20,
+                                        indent: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                           SizedBox(
+                                           height:MediaQuery.of(context).size.height*0.02
+                                          ),
+                                          Text(
+                                            'Humidity',
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    GoogleFonts.cabin().fontFamily,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black),
+                                          ),
+                                           SizedBox(
+                                           height:MediaQuery.of(context).size.height*0.02
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                Data["ac"]['humid'].toString(),
+                                                style: TextStyle(
+                                                    fontFamily: GoogleFonts.chewy()
+                                                        .fontFamily,
+                                                    fontSize: 50,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black),
+                                              ),
+                                              Text(
+                                                '%',
+                                                style: TextStyle(
+                                                    fontFamily: GoogleFonts.cabin()
+                                                        .fontFamily,
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 20,
+                         SizedBox(
+                         height:MediaQuery.of(context).size.height*0.02
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
-                          height: 113,
+                          padding: const EdgeInsets.all(10),
+                          height:MediaQuery.of(context).size.height*0.15,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(20),
                               color: Colors.white),
                           child: Row(
                             children: [
@@ -287,14 +290,14 @@ class _homeState extends State<home> {
                                   borderRadius: BorderRadius.circular(100),
                                   color: Colors.lightBlue,
                                 ),
-                                child: Image(
+                                child: const Image(
                                   image: AssetImage('assets/image2.png'),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 115,
                                 child: Column(
                                   children: [
@@ -305,7 +308,7 @@ class _homeState extends State<home> {
                                         Text(
                                           "Lights",
                                           style: TextStyle(
-                                              fontSize: 26,
+                                              fontSize: 22,
                                               fontFamily: GoogleFonts.concertOne()
                                                   .fontFamily,
                                               fontWeight: FontWeight.w400,
@@ -314,7 +317,7 @@ class _homeState extends State<home> {
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8),
+                                              padding: const EdgeInsets.only(top: 8),
                                               child: Container(
                                                 height: 17,
                                                 width: 17,
@@ -336,7 +339,7 @@ class _homeState extends State<home> {
                                                   fontFamily:
                                                       GoogleFonts.concertOne()
                                                           .fontFamily,
-                                                  fontSize: 27,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.black),
                                             ),
@@ -344,7 +347,7 @@ class _homeState extends State<home> {
                                         )
                                       ],
                                     ),
-                                    Divider(),
+                                    const Divider(),
                                     Row(
                                       children: [
                                         Column(
@@ -354,7 +357,7 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.inter()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w800,
                                                   color: Colors.black),
                                             ),
@@ -363,13 +366,13 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.inter()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.black),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 90,
                                         ),
                                         Column(
@@ -379,7 +382,7 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.itim()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w800,
                                                   color: Colors.black),
                                             ),
@@ -388,7 +391,7 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.itim()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.black),
                                             ),
@@ -402,12 +405,12 @@ class _homeState extends State<home> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
+                         SizedBox(
+                         height:MediaQuery.of(context).size.height*0.02
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
-                          height: 113,
+                          padding: const EdgeInsets.all(10),
+                         height:MediaQuery.of(context).size.height*0.15,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -421,14 +424,14 @@ class _homeState extends State<home> {
                                   borderRadius: BorderRadius.circular(100),
                                   color: Colors.lightBlue,
                                 ),
-                                child: Image(
+                                child: const Image(
                                   image: AssetImage('assets/image2.png'),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 115,
                                 child: Column(
                                   children: [
@@ -439,7 +442,7 @@ class _homeState extends State<home> {
                                         Text(
                                           "Air Conditioner",
                                           style: TextStyle(
-                                              fontSize: 26,
+                                              fontSize: 20,
                                               fontFamily: GoogleFonts.concertOne()
                                                   .fontFamily,
                                               fontWeight: FontWeight.w400,
@@ -448,7 +451,7 @@ class _homeState extends State<home> {
                                         Row(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8),
+                                              padding: const EdgeInsets.only(top: 8),
                                               child: Container(
                                                 height: 17,
                                                 width: 17,
@@ -469,7 +472,7 @@ class _homeState extends State<home> {
                                                   fontFamily:
                                                       GoogleFonts.concertOne()
                                                           .fontFamily,
-                                                  fontSize: 27,
+                                                  fontSize: 20,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.black),
                                             ),
@@ -477,7 +480,7 @@ class _homeState extends State<home> {
                                         )
                                       ],
                                     ),
-                                    Divider(),
+                                    const Divider(),
                                     Row(
                                       children: [
                                         Column(
@@ -487,7 +490,7 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.inter()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w800,
                                                   color: Colors.black),
                                             ),
@@ -499,7 +502,7 @@ class _homeState extends State<home> {
                                                       fontFamily:
                                                           GoogleFonts.inter()
                                                               .fontFamily,
-                                                      fontSize: 17,
+                                                      fontSize: 15,
                                                       fontWeight: FontWeight.w400,
                                                       color: Colors.black),
                                                 ),
@@ -509,7 +512,7 @@ class _homeState extends State<home> {
                                                       fontFamily:
                                                           GoogleFonts.inter()
                                                               .fontFamily,
-                                                      fontSize: 17,
+                                                      fontSize: 15,
                                                       fontWeight: FontWeight.w400,
                                                       color: Colors.black),
                                                 ),
@@ -517,7 +520,7 @@ class _homeState extends State<home> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 90,
                                         ),
                                         Column(
@@ -527,7 +530,7 @@ class _homeState extends State<home> {
                                               style: TextStyle(
                                                   fontFamily: GoogleFonts.itim()
                                                       .fontFamily,
-                                                  fontSize: 17,
+                                                  fontSize: 15,
                                                   fontWeight: FontWeight.w800,
                                                   color: Colors.black),
                                             ),
@@ -539,7 +542,7 @@ class _homeState extends State<home> {
                                                       fontFamily:
                                                           GoogleFonts.itim()
                                                               .fontFamily,
-                                                      fontSize: 17,
+                                                      fontSize: 15,
                                                       fontWeight: FontWeight.w400,
                                                       color: Colors.black),
                                                 ),
@@ -549,7 +552,7 @@ class _homeState extends State<home> {
                                                       fontFamily:
                                                           GoogleFonts.itim()
                                                               .fontFamily,
-                                                      fontSize: 17,
+                                                      fontSize: 15,
                                                       fontWeight: FontWeight.w400,
                                                       color: Colors.black),
                                                 ),

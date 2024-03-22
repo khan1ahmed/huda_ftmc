@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class TemperatureAdjuster extends StatefulWidget {
+  const TemperatureAdjuster({super.key});
+
   @override
   _TemperatureAdjusterState createState() => _TemperatureAdjusterState();
 }
@@ -35,11 +37,8 @@ class _TemperatureAdjusterState extends State<TemperatureAdjuster> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Temperature Adjuster'),
-      ),
-      body: Row(
+    return Container(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           buildColumn('AC On Temperature', _acOnTemp, _acOnRef),
